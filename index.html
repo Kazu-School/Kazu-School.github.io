@@ -1,19 +1,46 @@
 <html>
-<head>
-<title>大穂中学校生徒会非公式ページ</title>
-</head>
+<script>
+var data={593:["聖徳太子が摂政になる"],607:["小野妹子が随に送られる"],630:["第一回遣唐使"],645:["大化の改新"],663:["白村江の戦い"],672:["壬申の乱"],701:["大宝律令"],710:["平城京"],743:["墾田永年私財法"],784:["長岡京"],794:["平安京"],802:["坂上田村麻呂が胆沢城を作る"],866:["藤原良房が摂政になる"],887:["藤原基経が関白になる"],894:["遣唐使の停止"],935:["平将門の乱"],939:["藤原純友の乱"]};
+var keys=Object.keys(data);
+function fbutton(){
+button=document.getElementById("button").textContent;
+if (button=="start!"){
+fstart();
+}else if (button=="answer!"){
+fanswer();
+}
+}
+function fstart(){
+answer=keys[Math.floor(Math.random()*keys.length)];
+question=data[answer][Math.floor(Math.random()*data[answer].length)];
+document.getElementById("h1").textContent=question;
+document.getElementById("button").innerHTML="answer!";
+var input = document.createElement("input");
+input.setAttribute("type","number");
+input.setAttribute("id","myanswer");
+var div=document.getElementById("div");
+div.insertBefore(input,div.firstChild)
+document.getElementById("myanswer").value="";
+}
+function fanswer(){
+question=document.getElementById("h1").textContent;
+myanswer=Math.floor(document.getElementById("myanswer").value);
+document.getElementById("myanswer").remove();
+try {
+if (data[myanswer].includes(question)){
+document.getElementById("h1").textContent="正解！";
+} else {
+document.getElementById("h1").textContent="不正解！";
+}
+} catch(e) {
+document.getElementById("h1").textContent="不正解！";
+}
+document.getElementById("button").innerHTML="start!";
+}
+</script>
 <body>
-<p>ichiban</p>
-<audio preload="auto" controls>
-  <source src="ichiban.mp3">
-</audio>
-<p>habbit</p>
-<audio preload="auto" controls>
-  <source src="habbit.mp3">
-</audio>
-<p>daisuke</p>
-<audio preload="auto" controls>
-  <source src="daisuke.mp3">
-</audio>
+<h1 id="h1">歴史年表クイズ！</h1>
+<div id="div"></div>
+<button onclick="fbutton()" id="button">start!</button>
 </body>
 </html>
