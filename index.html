@@ -15,7 +15,7 @@ td1= row.insertCell(-1);
 td2= row.insertCell(-1);
 check = document.createElement("input");
 check.type="checkbox";
-check.setAttribute("onchange","check("+Object.keys(data)[0]+")")
+check.setAttribute("onchange","fcheck("+Object.keys(data)[0]+")")
 td2.appendChild(check);
 td.textContent=Object.keys(data)[i]+"";
 };
@@ -90,7 +90,7 @@ div.appendChild(button2);
 };
 
 
-function check(id){
+function fcheck(id){
 console.log(document.getElementById(id));
 };
 
